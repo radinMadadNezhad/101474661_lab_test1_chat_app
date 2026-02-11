@@ -4,10 +4,10 @@ A full-stack real-time chat application built with Node.js, Express, Socket.io, 
 
 ## Features
 
-### 1. GitHub Repository (10 pts)
+### 1. GitHub Repository 
 Code is maintained in a GitHub repository with regular commits tracking project progress.
 
-### 2. Working Signup Page (10 pts)
+### 2. Working Signup Page 
 - Registration form collects username, first name, last name, and password
 - Password confirmation field with 4-character minimum validation
 - Usernames are checked for uniqueness before creation
@@ -15,31 +15,31 @@ Code is maintained in a GitHub repository with regular commits tracking project 
 - User data is saved to MongoDB via the `POST /api/auth/signup` endpoint
 - Redirects to login page on successful registration
 
-### 3. Working Login/Logout (10 pts)
+### 3. Working Login/Logout 
 - Login authenticates against MongoDB using bcrypt password comparison
 - On successful login, user session is stored in `localStorage` (`chatUser` key containing username, firstname, lastname)
 - Logout clears `localStorage` and redirects to the login page
 - Auth pages redirect to chat if a session already exists; chat page redirects to login if no session is found
 
-### 4. MongoDB Validation (10 pts)
+### 4. MongoDB Validation 
 - **User schema**: `username` is required and enforced as `unique`; `firstname`, `lastname`, and `password` are all required with trimming
 - **GroupMessage schema**: `from_user`, `room`, and `message` are all required
 - **PrivateMessage schema**: `from_user`, `to_user`, and `message` are all required
 - Duplicate username attempts return a `400` error with a descriptive message
 
-### 5. Room Join/Leave (10 pts)
+### 5. Room Join/Leave 
 - Five predefined rooms: **devops**, **cloud computing**, **covid19**, **sports**, **nodeJS**
 - Users click a room in the sidebar to join; the server tracks active users per room in memory
 - System messages notify all room members when a user joins or leaves
 - A "Leave Room" button lets users exit their current room
 - The active user list in the sidebar updates in real time via Socket.io
 
-### 6. Typing Indicator (10 pts)
+### 6. Typing Indicator 
 - **Room chat**: emits `typing` / `stopTyping` events; displays "[username] is typing..." to other room members
 - **Private chat**: emits `privateTyping` / `privateStopTyping` events; displays indicator only to the recipient
 - Uses a 1-second debounce timeout — the indicator clears automatically when the user stops typing
 
-### 7. Chat Functionality with MongoDB Storage (40 pts)
+### 7. Chat Functionality with MongoDB Storage 
 - **Room messages**: sent via Socket.io `chatMessage` event, saved to the `GroupMessage` collection, and broadcast to all users in the room
 - **Private messages**: sent via `privateMessage` event, saved to the `PrivateMessage` collection, and delivered only to the sender and recipient
 - Message history is loaded from MongoDB when joining a room (up to 100 messages) or opening a private chat
